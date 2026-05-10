@@ -1,0 +1,13 @@
+services:
+  jupyter:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./data:/app/data
+      - ./notebooks:/app/notebooks
+    deploy:
+      resources:
+        limits:
+          memory: 4g
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
